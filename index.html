@@ -7,11 +7,11 @@ body { font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
 .wrap { max-width: 760px; margin: 0 auto; }
 header { background: linear-gradient(135deg,#6b4f2a,#8a6d3b); color: #fff; border-radius: 16px; padding: 20px; margin-bottom: 16px; }
 header h1 { font-size: 20px; }
-header .meta { font-size: 12px; opacity: .85; margin-top: 6px; }
+header .meta { font-size: 12px; opacity: .9; margin-top: 6px; }
 .bigbar { background: rgba(255,255,255,.25); border-radius: 99px; height: 10px; margin-top: 12px; overflow: hidden; }
 .bigbar i { display: block; height: 100%; background: #ffd479; }
-.bigbar + .meta { margin-top: 4px; }
 h3.sec { font-size: 15px; margin: 20px 4px 10px; color: #6b4f2a; }
+.legend { font-size: 11px; color: #8a6d3b; background: #fbf6ec; border-radius: 8px; padding: 6px 10px; margin: 4px 4px 0; }
 .timeline { background: #fff; border-radius: 14px; padding: 8px 14px; list-style: none; box-shadow: 0 2px 8px rgba(0,0,0,.05); }
 .timeline li { display: flex; align-items: center; gap: 10px; padding: 9px 0; border-bottom: 1px dashed #eee; font-size: 13px; }
 .timeline li:last-child { border: 0; }
@@ -31,166 +31,61 @@ h3.sec { font-size: 15px; margin: 20px 4px 10px; color: #6b4f2a; }
 .ghead { display: flex; justify-content: space-between; font-size: 13px; font-weight: 600; color: #4a3f30; }
 .gpct { color: #999; font-weight: 400; }
 .items { list-style: none; margin-top: 8px; }
-.item { display: flex; gap: 8px; padding: 5px 0; font-size: 13px; color: #444; }
-.item.done .txt { color: #aaa; text-decoration: line-through; }
-.box { flex-shrink: 0; }
+.item { display: flex; align-items: center; gap: 8px; padding: 7px 0; font-size: 13px; color: #444; flex-wrap: wrap; border-bottom: 1px solid #f6f3ee; }
+.item:last-child { border-bottom: 0; }
+.item .txt { flex: 1; min-width: 150px; }
+.item .box { flex-shrink: 0; font-size: 14px; }
+.item .meta { font-size: 11px; color: #8a7a5e; background: #f3efe7; padding: 2px 8px; border-radius: 99px; white-space: nowrap; }
+.item .rv { font-size: 11px; padding: 2px 9px; border-radius: 99px; font-weight: 600; white-space: nowrap; }
+.item.approved .txt { color: #2e7d32; }
+.item.approved .rv { background: #e3f5e6; color: #2e7d32; }
+.item.submitted .txt { color: #444; }
+.item.submitted .rv { background: #fff3d6; color: #b8860b; }
+.item.rejected .txt { color: #c0392b; text-decoration: line-through; }
+.item.rejected .rv { background: #fde2dd; color: #c0392b; }
+.item.pending .txt { color: #555; }
+.item.pending .rv { background: #eee; color: #999; }
 .note { font-size: 12px; color: #8a6d3b; background: #fbf6ec; border-left: 3px solid #ffd479; padding: 6px 10px; border-radius: 6px; margin-top: 8px; }
 footer { text-align: center; font-size: 11px; color: #aaa; margin: 20px 0; }
 </style></head><body><div class="wrap">
 <header>
   <h1>🐎 快步要起坐 · 90天项目看板</h1>
-  <div class="meta">当前：第7周（8/4-8/10） 本周计划 · 周一8/10起（尚未执行） ｜ 整体进度 0/29（0%）｜ 数据源 tasks_week_by_week.md</div>
+  <div class="meta">当前：第1周（8/10-8/16） ｜ 已批准 0/29（0%） ｜ 爽审核关闭</div>
   <div class="bigbar"><i style="width:0%"></i></div>
 </header>
 <h3 class="sec">🗓️ 关键时间节点</h3>
 <ul class="timeline"><li class="check"><span class="t">周四 21:00</span><span class="sub">助手检查：周四直播 + 周四短视频</span><span class="tag bot">助手</span></li><li class="check"><span class="t">周五 21:00</span><span class="sub">助手检查：周五直播 + 讲座 + Vlog</span><span class="tag bot">助手</span></li><li class="check"><span class="t">周六 21:00</span><span class="sub">助手检查：周六模拟器直播</span><span class="tag bot">助手</span></li><li class="check"><span class="t">周一 09:00</span><span class="sub">自动生成周报</span><span class="tag bot">助手</span></li></ul>
-<h3 class="sec">📋 任务看板</h3>
+<div class="legend">图例：✅ 通过(已关闭) ｜ 🟡 待审核(待爽确认) ｜ 🔴 驳回(重做) ｜ ⬜ 待办 ｜ 每条含负责人 + 完成时间</div>
+<h3 class="sec">📋 任务看板（第1周）</h3>
 <section class="week ">
-    <h2>第1周（6/24-6/30） </h2>
-    <div class="bar big"><i style="width:0%"></i></div>
-    <div class="groups"><div class="group">
-    <div class="ghead"><span>其他</span><span class="gpct">0/5 · 0%</span></div>
-    <div class="bar"><i style="width:0%"></i></div>
-    <ul class="items"><li class="item "><span class="box">⬜</span><span class="txt">短视频1：「停更一年，为什么重新回到马场」</span></li><li class="item "><span class="box">⬜</span><span class="txt">短视频2：「成年人重新学骑马，身体先卡在哪几关」</span></li><li class="item "><span class="box">⬜</span><span class="txt">短视频3：「第一次上模拟器，最难的不是怕摔，是不知道哪里发力」</span></li><li class="item "><span class="box">⬜</span><span class="txt">直播：0场（准备期）</span></li><li class="item "><span class="box">⬜</span><span class="txt">关键动作：爽回归内容启动，马匹观察</span></li></ul>
-  </div></div>
-    
-  </section><section class="week ">
-    <h2>第2周（7/1-7/7） </h2>
-    <div class="bar big"><i style="width:0%"></i></div>
-    <div class="groups"><div class="group">
-    <div class="ghead"><span>其他</span><span class="gpct">0/3 · 0%</span></div>
-    <div class="bar"><i style="width:0%"></i></div>
-    <ul class="items"><li class="item "><span class="box">⬜</span><span class="txt">短视频：「马匹今天状态好不好，先学会观察」「新手为什么别急着上真马」「一匹马一天到底吃多少」</span></li><li class="item "><span class="box">⬜</span><span class="txt">直播：2场轻量试播（第一次轻带马粮和模拟器）</span></li><li class="item "><span class="box">⬜</span><span class="txt">关键动作：货盘开始露出，测试用户问题</span></li></ul>
-  </div></div>
-    
-  </section><section class="week ">
-    <h2>第3周（7/8-7/13） </h2>
-    <div class="bar big"><i style="width:0%"></i></div>
-    <div class="groups"><div class="group">
-    <div class="ghead"><span>其他</span><span class="gpct">0/3 · 0%</span></div>
-    <div class="bar"><i style="width:0%"></i></div>
-    <ul class="items"><li class="item "><span class="box">⬜</span><span class="txt">短视频：「为什么坐不稳」「模拟器纠正成年人最容易错的一个发力点」「3次机器马训练后能学会什么」</span></li><li class="item "><span class="box">⬜</span><span class="txt">直播：2场试播</span></li><li class="item "><span class="box">⬜</span><span class="txt">关键动作：整理第一批高频问题，形成直播话术库和货盘问答表</span></li></ul>
-  </div></div>
-    
-  </section><section class="week ">
-    <h2>第4周（7/14-7/20） </h2>
-    <div class="bar big"><i style="width:0%"></i></div>
-    <div class="groups"><div class="group">
-    <div class="ghead"><span>其他</span><span class="gpct">0/3 · 0%</span></div>
-    <div class="bar"><i style="width:0%"></i></div>
-    <ul class="items"><li class="item "><span class="box">⬜</span><span class="txt">短视频：模拟器体验/马粮选择/生活方式破圈</span></li><li class="item "><span class="box">⬜</span><span class="txt">直播：2-3场（周四二手/周五马粮/周六模拟器）</span></li><li class="item "><span class="box">⬜</span><span class="txt">关键动作：固定直播节奏，建立二手装备编号体系</span></li></ul>
-  </div></div>
-    
-  </section><section class="week ">
-    <h2>第5周（7/21-7/27） </h2>
-    <div class="bar big"><i style="width:0%"></i></div>
-    <div class="groups"><div class="group">
-    <div class="ghead"><span>其他</span><span class="gpct">0/3 · 0%</span></div>
-    <div class="bar"><i style="width:0%"></i></div>
-    <ul class="items"><li class="item "><span class="box">⬜</span><span class="txt">短视频：马匹状态/二手装备选择/马场疗愈</span></li><li class="item "><span class="box">⬜</span><span class="txt">直播：2-3场</span></li><li class="item "><span class="box">⬜</span><span class="txt">关键动作：建立二手装备编号/成色/瑕疵说明/售后边界</span></li></ul>
-  </div></div>
-    
-  </section><section class="week ">
-    <h2>第6周（7/28-8/3） </h2>
-    <div class="bar big"><i style="width:0%"></i></div>
-    <div class="groups"><div class="group">
-    <div class="ghead"><span>其他</span><span class="gpct">0/3 · 0%</span></div>
-    <div class="bar"><i style="width:0%"></i></div>
-    <ul class="items"><li class="item "><span class="box">⬜</span><span class="txt">短视频：爽专业背书/入门装备/马匹照护</span></li><li class="item "><span class="box">⬜</span><span class="txt">直播：3场</span></li><li class="item "><span class="box">⬜</span><span class="txt">关键动作：明确马粮组合/模拟器留资/二手上新节奏</span></li></ul>
-  </div></div>
-    
-  </section><section class="week current">
-    <h2>第7周（8/4-8/10） 本周计划 · 周一8/10起（尚未执行） <span class="badge">本周</span></h2>
+    <h2>第1周（8/10-8/16） </h2>
     <div class="bar big"><i style="width:0%"></i></div>
     <div class="groups"><div class="group">
     <div class="ghead"><span>短视频</span><span class="gpct">0/4 · 0%</span></div>
     <div class="bar"><i style="width:0%"></i></div>
-    <ul class="items"><li class="item "><span class="box">⬜</span><span class="txt">Vlog脚本2条（含机器马）</span></li><li class="item "><span class="box">⬜</span><span class="txt">Vlog已发布数据复盘</span></li><li class="item "><span class="box">⬜</span><span class="txt">Vlog视频拍摄+剪辑1条（周五发布）</span></li><li class="item "><span class="box">⬜</span><span class="txt">短视频拍摄+剪辑1条（周四发布）</span></li></ul>
+    <ul class="items"><li class="item pending"><span class="box">⬜</span><span class="txt">Vlog脚本2条（含机器马）</span><span class="meta">👤卷卷</span><span class="rv">待办</span></li><li class="item pending"><span class="box">⬜</span><span class="txt">Vlog已发布数据复盘</span><span class="meta">👤卷卷</span><span class="rv">待办</span></li><li class="item pending"><span class="box">⬜</span><span class="txt">Vlog视频拍摄+剪辑1条（周五发布）</span><span class="meta">👤卷卷</span><span class="rv">待办</span></li><li class="item pending"><span class="box">⬜</span><span class="txt">短视频拍摄+剪辑1条（周四发布）</span><span class="meta">👤卷卷</span><span class="rv">待办</span></li></ul>
   </div><div class="group">
     <div class="ghead"><span>直播</span><span class="gpct">0/6 · 0%</span></div>
     <div class="bar"><i style="width:0%"></i></div>
-    <ul class="items"><li class="item "><span class="box">⬜</span><span class="txt">直播话术稿</span></li><li class="item "><span class="box">⬜</span><span class="txt">直播专业知识学习</span></li><li class="item "><span class="box">⬜</span><span class="txt">听竞品直播（深蓝）</span></li><li class="item "><span class="box">⬜</span><span class="txt">周四直播（聊天场）</span></li><li class="item "><span class="box">⬜</span><span class="txt">周五直播（添加剂主题）</span></li><li class="item "><span class="box">⬜</span><span class="txt">快步账号自选带货功能保证金开通</span></li></ul>
+    <ul class="items"><li class="item pending"><span class="box">⬜</span><span class="txt">直播话术稿</span><span class="meta">👤爽</span><span class="rv">待办</span></li><li class="item pending"><span class="box">⬜</span><span class="txt">直播专业知识学习</span><span class="meta">👤爽</span><span class="rv">待办</span></li><li class="item pending"><span class="box">⬜</span><span class="txt">听竞品直播（深蓝）</span><span class="meta">👤卷卷</span><span class="rv">待办</span></li><li class="item pending"><span class="box">⬜</span><span class="txt">周四直播（聊天场）</span><span class="meta">👤爽</span><span class="rv">待办</span></li><li class="item pending"><span class="box">⬜</span><span class="txt">周五直播（添加剂主题）</span><span class="meta">👤爽</span><span class="rv">待办</span></li><li class="item pending"><span class="box">⬜</span><span class="txt">快步账号自选带货功能保证金开通</span><span class="meta">👤爽</span><span class="rv">待办</span></li></ul>
   </div><div class="group">
     <div class="ghead"><span>嘉铭及马场</span><span class="gpct">0/6 · 0%</span></div>
     <div class="bar"><i style="width:0%"></i></div>
-    <ul class="items"><li class="item "><span class="box">⬜</span><span class="txt">周五讲座</span></li><li class="item "><span class="box">⬜</span><span class="txt">社群更新（每周每群3-5次）</span></li><li class="item "><span class="box">⬜</span><span class="txt">公众号更新1-2条</span></li><li class="item "><span class="box">⬜</span><span class="txt">小红书招新1-2条</span></li><li class="item "><span class="box">⬜</span><span class="txt">马蜂窝持续招募</span></li><li class="item "><span class="box">⬜</span><span class="txt">马场合同更新跟进</span></li></ul>
+    <ul class="items"><li class="item pending"><span class="box">⬜</span><span class="txt">周五讲座</span><span class="meta">👤嘉铭</span><span class="rv">待办</span></li><li class="item pending"><span class="box">⬜</span><span class="txt">社群更新（每周每群3-5次）</span><span class="meta">👤嘉铭</span><span class="rv">待办</span></li><li class="item pending"><span class="box">⬜</span><span class="txt">公众号更新1-2条</span><span class="meta">👤嘉铭</span><span class="rv">待办</span></li><li class="item pending"><span class="box">⬜</span><span class="txt">小红书招新1-2条</span><span class="meta">👤嘉铭</span><span class="rv">待办</span></li><li class="item pending"><span class="box">⬜</span><span class="txt">马蜂窝持续招募</span><span class="meta">👤嘉铭</span><span class="rv">待办</span></li><li class="item pending"><span class="box">⬜</span><span class="txt">马场合同更新跟进</span><span class="meta">👤嘉铭</span><span class="rv">待办</span></li></ul>
   </div><div class="group">
     <div class="ghead"><span>店铺</span><span class="gpct">0/10 · 0%</span></div>
     <div class="bar"><i style="width:0%"></i></div>
-    <ul class="items"><li class="item "><span class="box">⬜</span><span class="txt">更新产品卖点文案，用于更新图片，完成后替换上架链接</span></li><li class="item "><span class="box">⬜</span><span class="txt">教会红朗姆对接人操作发货全流程</span></li><li class="item "><span class="box">⬜</span><span class="txt">持续监测订单，配合红朗姆完成首单发货</span></li><li class="item "><span class="box">⬜</span><span class="txt">安装并测试AI客服，调整回复话术</span></li><li class="item "><span class="box">⬜</span><span class="txt">整理初版客服FAQ</span></li><li class="item "><span class="box">⬜</span><span class="txt">各平台账号头像统一更换为「马小里予」Logo</span></li><li class="item "><span class="box">⬜</span><span class="txt">根据直播排期随时配合卖货支持</span></li><li class="item "><span class="box">⬜</span><span class="txt">寄出调研问卷腰带（1个）</span></li><li class="item "><span class="box">⬜</span><span class="txt">输出调研问卷小红书图文并发布，回复留言/私信引导获取新问卷</span></li><li class="item "><span class="box">⬜</span><span class="txt">马术课、模拟器课上链接</span></li></ul>
+    <ul class="items"><li class="item pending"><span class="box">⬜</span><span class="txt">更新产品卖点文案，用于更新图片，完成后替换上架链接</span><span class="meta">👤卷卷</span><span class="rv">待办</span></li><li class="item pending"><span class="box">⬜</span><span class="txt">教会红朗姆对接人操作发货全流程</span><span class="meta">👤红朗姆对接人</span><span class="rv">待办</span></li><li class="item pending"><span class="box">⬜</span><span class="txt">持续监测订单，配合红朗姆完成首单发货</span><span class="meta">👤红朗姆对接人</span><span class="rv">待办</span></li><li class="item pending"><span class="box">⬜</span><span class="txt">安装并测试AI客服，调整回复话术</span><span class="meta">👤卷卷</span><span class="rv">待办</span></li><li class="item pending"><span class="box">⬜</span><span class="txt">整理初版客服FAQ</span><span class="meta">👤卷卷</span><span class="rv">待办</span></li><li class="item pending"><span class="box">⬜</span><span class="txt">各平台账号头像统一更换为「马小里予」Logo</span><span class="meta">👤卷卷</span><span class="rv">待办</span></li><li class="item pending"><span class="box">⬜</span><span class="txt">根据直播排期随时配合卖货支持</span><span class="meta">👤卷卷</span><span class="rv">待办</span></li><li class="item pending"><span class="box">⬜</span><span class="txt">寄出调研问卷腰带（1个）</span><span class="meta">👤爽</span><span class="rv">待办</span></li><li class="item pending"><span class="box">⬜</span><span class="txt">输出调研问卷小红书图文并发布，回复留言/私信引导获取新问卷</span><span class="meta">👤卷卷</span><span class="rv">待办</span></li><li class="item pending"><span class="box">⬜</span><span class="txt">马术课、模拟器课上链接</span><span class="meta">👤爽</span><span class="rv">待办</span></li></ul>
   </div><div class="group">
     <div class="ghead"><span>机器马</span><span class="gpct">0/2 · 0%</span></div>
     <div class="bar"><i style="width:0%"></i></div>
-    <ul class="items"><li class="item "><span class="box">⬜</span><span class="txt">小红书持续曝光露出转化</span></li><li class="item "><span class="box">⬜</span><span class="txt">如档期允许加一场直播曝光露出</span></li></ul>
+    <ul class="items"><li class="item pending"><span class="box">⬜</span><span class="txt">小红书持续曝光露出转化</span><span class="meta">👤卷卷</span><span class="rv">待办</span></li><li class="item pending"><span class="box">⬜</span><span class="txt">如档期允许加一场直播曝光露出</span><span class="meta">👤爽</span><span class="rv">待办</span></li></ul>
   </div><div class="group">
     <div class="ghead"><span>其他</span><span class="gpct">0/1 · 0%</span></div>
     <div class="bar"><i style="width:0%"></i></div>
-    <ul class="items"><li class="item "><span class="box">⬜</span><span class="txt">快步内容计划更新</span></li></ul>
+    <ul class="items"><li class="item pending"><span class="box">⬜</span><span class="txt">快步内容计划更新</span><span class="meta">👤爽</span><span class="rv">待办</span></li></ul>
   </div></div>
-    <div class="note">📌 ⚠️ 以下为新媒体团队本周（8/10 周一 ~ 8/16 周日）执行计划，截至周一尚未开始执行。将按时间节点定期检查完成情况（见文末「定时检查机制」）。</div><div class="note">📌 📎 另有「新媒体团队本周计划」图片（2026-08-10 发送），内容待用户转录后并入本清单。</div>
-  </section><section class="week ">
-    <h2>第8周（8/11-8/12）部分 </h2>
-    <div class="bar big"><i style="width:0%"></i></div>
-    <div class="groups"><div class="group">
-    <div class="ghead"><span>其他</span><span class="gpct">0/4 · 0%</span></div>
-    <div class="bar"><i style="width:0%"></i></div>
-    <ul class="items"><li class="item "><span class="box">⬜</span><span class="txt">短视频：马粮标准/入门装备/怕马新手进阶</span></li><li class="item "><span class="box">⬜</span><span class="txt">直播：3场（补回周六模拟器场，恢复固定排期）</span></li><li class="item "><span class="box">⬜</span><span class="txt">关键动作：固定直播片头/成交动作/售后边界</span></li><li class="item "><span class="box">⬜</span><span class="txt">待跟进：带货上架链接替换确认 / 调研问卷收集量跟踪 / 周六模拟器直播补排</span></li></ul>
-  </div></div>
-    
-  </section><section class="week ">
-    <h2>第8周（8/13-8/17） </h2>
-    <div class="bar big"><i style="width:0%"></i></div>
-    <div class="groups"><div class="group">
-    <div class="ghead"><span>其他</span><span class="gpct">0/3 · 0%</span></div>
-    <div class="bar"><i style="width:0%"></i></div>
-    <ul class="items"><li class="item "><span class="box">⬜</span><span class="txt">短视频：直播切片/马粮标准/入门装备</span></li><li class="item "><span class="box">⬜</span><span class="txt">直播：3场固定直播</span></li><li class="item "><span class="box">⬜</span><span class="txt">关键动作：固定直播片头、成交动作和售后边界</span></li></ul>
-  </div></div>
-    
-  </section><section class="week ">
-    <h2>第9周（8/18-8/24） </h2>
-    <div class="bar big"><i style="width:0%"></i></div>
-    <div class="groups"><div class="group">
-    <div class="ghead"><span>其他</span><span class="gpct">0/3 · 0%</span></div>
-    <div class="bar"><i style="width:0%"></i></div>
-    <ul class="items"><li class="item "><span class="box">⬜</span><span class="txt">短视频：添加剂注意事项/直播切片/马匹状态</span></li><li class="item "><span class="box">⬜</span><span class="txt">直播：3场</span></li><li class="item "><span class="box">⬜</span><span class="txt">关键动作：马粮复购提醒上线，模拟器预约表上线</span></li></ul>
-  </div></div>
-    
-  </section><section class="week ">
-    <h2>第10周（8/25-8/31） </h2>
-    <div class="bar big"><i style="width:0%"></i></div>
-    <div class="groups"><div class="group">
-    <div class="ghead"><span>其他</span><span class="gpct">0/3 · 0%</span></div>
-    <div class="bar"><i style="width:0%"></i></div>
-    <ul class="items"><li class="item "><span class="box">⬜</span><span class="txt">短视频：用户问题合集/模拟器纠错/二手寄卖故事</span></li><li class="item "><span class="box">⬜</span><span class="txt">直播：4场</span></li><li class="item "><span class="box">⬜</span><span class="txt">关键动作：测试二手寄卖服务，沉淀寄卖规则</span></li></ul>
-  </div></div>
-    
-  </section><section class="week ">
-    <h2>第11周（9/1-9/7） </h2>
-    <div class="bar big"><i style="width:0%"></i></div>
-    <div class="groups"><div class="group">
-    <div class="ghead"><span>其他</span><span class="gpct">0/3 · 0%</span></div>
-    <div class="bar"><i style="width:0%"></i></div>
-    <ul class="items"><li class="item "><span class="box">⬜</span><span class="txt">短视频：马场体验日预热/直播高光/马匹日常复盘</span></li><li class="item "><span class="box">⬜</span><span class="txt">直播：4场</span></li><li class="item "><span class="box">⬜</span><span class="txt">关键动作：小范围招募马场体验日用户</span></li></ul>
-  </div></div>
-    
-  </section><section class="week ">
-    <h2>第12周（9/8-9/14） </h2>
-    <div class="bar big"><i style="width:0%"></i></div>
-    <div class="groups"><div class="group">
-    <div class="ghead"><span>其他</span><span class="gpct">0/3 · 0%</span></div>
-    <div class="bar"><i style="width:0%"></i></div>
-    <ul class="items"><li class="item "><span class="box">⬜</span><span class="txt">短视频：用户反馈/复购提醒/成交复盘</span></li><li class="item "><span class="box">⬜</span><span class="txt">直播：4场</span></li><li class="item "><span class="box">⬜</span><span class="txt">关键动作：形成短视频—直播—私信—成交闭环</span></li></ul>
-  </div></div>
-    
-  </section><section class="week ">
-    <h2>第13周（9/15-9/21） </h2>
-    <div class="bar big"><i style="width:0%"></i></div>
-    <div class="groups"><div class="group">
-    <div class="ghead"><span>其他</span><span class="gpct">0/3 · 0%</span></div>
-    <div class="bar"><i style="width:0%"></i></div>
-    <ul class="items"><li class="item "><span class="box">⬜</span><span class="txt">短视频：90天复盘/下一阶段预告</span></li><li class="item "><span class="box">⬜</span><span class="txt">直播：2-3场</span></li><li class="item "><span class="box">⬜</span><span class="txt">关键动作：汇总数据，决定后续主推货盘和内容方向</span></li></ul>
-  </div></div>
-    <div class="note">📌 由 OpenClaw 定时任务驱动，到点为用户推送检查清单；用户汇报后由助手更新上方勾选状态。</div>
+    <div class="note">📌 由 OpenClaw 定时任务驱动。到点推送检查清单 → 用户汇报「谁 + 什么时间完成」→ 助手标记待审核并重新部署 → 爽审核通过/不通过。</div>
   </section>
-<footer>本看板由助手自动生成 · 任务更新后重新生成即可同步</footer>
+<footer>本看板由助手自动生成 · 任务更新后重新生成即可同步 · 关闭需爽审核通过</footer>
 </div></body></html>
